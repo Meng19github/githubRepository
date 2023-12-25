@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.altraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master/masterlayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <h2>New Client Registration Form</h2>
+    </div>
+    <form th:action="@{/Client/new}" th:object="${Client}" method="post">
+            <input type="hidden" th:value="${Client.id}" name="id">
+
+            <div class="form-group">
+                <label for="ClientName">Client Name</label>
+                <input type="text" class="form-control" id="ClientName" th:value="${Client.ClientName}" name="ClientName" maxlength=25 required>
+            </div>
+            <div class="form-group">
+                <label for="Department">Client Department</label>
+                <input type="text" step="1.0" class="form-control" id="Department" th:value="${Client.Department}" name="Department" maxlength=50 required>
+            </div>
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input type="text" step="1.0" class="form-control" id="PhoneNumber" th:value="${Client.PhoneNumber}" name="PhoneNumber" maxlength=50 required>
+        </div>
+
+            <div>
+                <a href="#" class="btn btn-outline-warning">Cancel</a>
+                <button class="btn btn-outline-success" type="submit">Save</button>
+
+            </div>
+
+    </form>
+
+
+
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.altraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master/masterlayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <h2>List of Properties Borrowed</h2>
+    </div>
+    <table class="table table-hover" id="Properties-table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">PropertyID</th>
+            <th scope="col">PropertyName</th>
+            <th scope="col">BrandName </th>
+            <th scope="col">UnitPurchasePrice </th>
+            <th scope="col">StoreKeeperName </th>
+            <th scope="col">Client Name </th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Propertie:${Properties}">
+            <th th:text="${Propertie.id}"></th>
+            <td th:text="${Propertie.PropertyName}"></td>
+            <td th:text="${Propertie.BrandName}"></td>
+            <td th:text="${Propertie.PurchasePrice}"></td>
+            <td th:text="${Propertie.StoreKeeperName}"></td>
+            <td th:text="${Propertie.client.ClientName}"></td>
+            <td><a th:href="@{/Properties/delete/__${Propertie.id}__}" onclick="return confirm('Are you sure you want to delete the Property?')" class="btn btn-outline-danger">Delete</a>
+                <a th:href="@{/Properties/edit/__${Propertie.id}__}" class="btn btn-outline-warning">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
